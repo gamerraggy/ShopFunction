@@ -1,0 +1,65 @@
+#include<iostream>
+using namespace std;
+
+//VARIABLE IS GLOBAL
+//inventory using array
+string inventory[10];
+int money = 100;
+
+//function declaration
+void shop();
+
+
+int main() {
+	int room = 1;
+	string input;
+
+	do {
+		switch (room) {
+		case 1:
+			cout << "You're in room 1, you can only go south" << endl;
+			cin >> input;
+			if (input == "south")
+				room = 2;
+			break;
+		case 2:
+			shop(); //call function
+			cout << "You're in room 2, you can go only north" << endl;
+			cin >> input;
+			if (input == "north")
+				room = 1;
+			break;
+		}//ends switch
+
+
+	} while (input != "quit"); //ends loop
+
+
+}// end main
+
+void shop() {
+	char input = 'a';
+	cout << endl << endl << "---------------------------------------------------------" << endl;
+	cout << "welcome to the shop!" << endl;
+	cout << "type 'q' to quit" << endl;
+	while (input != 'q') {
+		cout << "Pick an item: c) Chips m) MANGO d) cheese" << endl;
+		cin >> input;
+		switch (input) {
+		case 'c':
+			cout << "Heres your CHIPS" << endl;
+			inventory[0] = "Chips";
+			break;
+		case 'm':
+			cout << "Heres your MANGO" << endl;
+			inventory[1] = "MANGO";
+			break;
+		case 'd':
+			cout << "Heres your CHEESE, it isn't drippy" << endl;
+			inventory[2] = "Cheese";
+			break;
+		}
+
+	}
+	cout << "---------------------------------------------------------" << endl;
+}
